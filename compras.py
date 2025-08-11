@@ -1,9 +1,17 @@
 def lista_de_compras():
     produtos = []
     proximo_id = 1
+
     while True:
         print("********************")
-        print("--Lista de compras--")
+        print("--Lista de compras simples--")
+        for p in produtos:
+            print("------------------------------")
+            print(f"ID: {p['id']}")
+            print(f"Nome: {p['nome']}")
+            print(f"Unidade: {p['unidade']}")
+            print(f"Quantidade: {p['quantidade']}")
+            print(f"Descricao: {p['descricao']}")
         print("********************")
         print()
         print("1. Adicionar produtos")
@@ -20,8 +28,6 @@ def lista_de_compras():
         if escolha not in ['1', '2', '3', '4']:
             print("Opção invalida! tente novamente")
             continue
-
-
 
         unidades_de_medida = [
             "Quilograma",
@@ -72,12 +78,26 @@ def lista_de_compras():
             else:
                 print("Produto não escontrado!")
 
+        if escolha == '3':
 
+            termo = input("Digite o termo que deseja procurar: ").lower()
 
+            encontrados = []
 
+            for p in produtos:
+                if termo in p["nome"].lower():
+                    encontrados.append(p)
 
-
-
+            if encontrados:
+                print("Produto(s) encontrado(s) com sucesso!\n")
+                for p in encontrados:
+                    print(f"ID: {p['id']}")
+                    print(f"Nome: {p['nome']}")
+                    print(f"Quantidade: {p['quantidade']}")
+                    print()
+                print(f"Total de produtos encontrados: {len(encontrados)}")
+            else:
+                print("Produto(s) não encontrado(s)!")
 
 
 lista_de_compras()
